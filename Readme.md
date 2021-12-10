@@ -11,22 +11,22 @@
 ## Prepare files and folders
 1. Create a container folder that will contain:
 	* a directory in which the Xcode project and related files will live
-		- this directory should contain a pre-actions script (can be obtained here: ...)
+		- this directory should contain a pre-actions script (see step 2 if this section)
 	* a directory for the libexif code
 	* a directory containing the built libexif
-	* a configure script specific for use with this libexif (can be obtained here: ...)
+	* a configure script specific for use with this libexif (see step 2 if this section)
 
 2. inside that container folder, run:
 > `git clone https://github.com/libexif/libexif.git && cd libexif && autoreconf -i`
-> `curl configure-xcrun.sh`
+> `curl https://raw.githubusercontent.com/Joride/Autotools-Xcode/main/configure-xcrun.sh -o configure-xcrun.sh && chmod 755 configure-xcrun.sh`
 
 3. inside the 'applications' directory run:
-> `curl pre-actions.sh`
+> `curl https://raw.githubusercontent.com/Joride/Autotools-Xcode/main/pre-actions.sh -o pre-actions.sh && chmod 755 pre-actions.sh`
 
 4. Create a project using Xcode
 Choose for the location that container dir
 
-The directory structure now should look like this:
+The directory structure now should look like this (this will look bad in formatted markdown, which is how Github displays this). Open this file in a plain text editor to see it in a more sensible way):
 - <container dir>
 | - (dir) applications
 |	| - <project-name>.xcodeproj
@@ -47,8 +47,7 @@ The directory structure now should look like this:
 4. From the dropdown menu preceded by 'Provide build settings from', select the project (instead of 'None', which is the default)
 5. Clear the textfield (where it says: "# Type a script or drag a script file from your workspace to insert its path."), and copy and paste the following:
 "$SRCROOT/pre-actions.sh" >> "$SRCROOT/pre-action.log" 2>&1
-6. Build. N.b. this build *will fail*. This is expected.
-The build has caused this script to run, and in turn has caused libexif to be built and a symlink to be added to the 'applications' directory. Now we can continue updating some build settings.
+6. Build. The build should succeed building the template app from Xcode. In addition, the pre-actions.sh and configure-xcrun.sh scripts build have caused libexif to be built and a symlink to be added to the 'applications' directory. Now we can continue updating some build settings to actually inlude that library into the app.
 
 
 ## Setting up the project in Xcode to use libexif
