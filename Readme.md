@@ -18,6 +18,7 @@
 
 2. inside that container folder, run:
 > `git clone https://github.com/libexif/libexif.git && cd libexif && autoreconf -i`
+
 > `curl https://raw.githubusercontent.com/Joride/Autotools-Xcode/main/configure-xcrun.sh -o configure-xcrun.sh && chmod 755 configure-xcrun.sh`
 
 3. inside the 'applications' directory run:
@@ -26,8 +27,9 @@
 4. Create a project using Xcode
 Choose for the location that container dir
 
-The directory structure now should look like this (this will look bad in formatted markdown, which is how Github displays this). Open this file in a plain text editor to see it in a more sensible way):
-- <container dir>
+The directory structure now should look like this (this next section will look bad in formatted markdown, which is how Github displays this). Open this file in a plain text editor to see it in a more sensible way):
+
++ <container dir>
 | - (dir) applications
 |	| - <project-name>.xcodeproj
 |	| - (dir) <project-name>
