@@ -109,12 +109,11 @@ then
     OPT_FLAGS="-Os -fembed-bitcode"
 else
     DEBUG_POSTFIX="-debug"
-    OPT_FLAGS="-Os -fembed-bitcode -g3"
+    OPT_FLAGS="-fembed-bitcode -g3"
 fi
 
 ## on M1 Macbook Air there are 8 cores, so that seems an appropriate number
 MAKE_JOBS=8
-
 
 
 doConfigure()
